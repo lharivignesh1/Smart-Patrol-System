@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Patrolling System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particles"></canvas>
+
+<!-- SCANLINE OVERLAY -->
+<div class="scanlines"></div>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="home-content">
+    <div class="logo-ring">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="shield-icon">🛡️</div>
+    </div>
+    <div class="title-block">
+      <div class="subtitle-top">NATIONAL SECURITY GRID</div>
+      <h1>SMART<br/><span class="accent">PATROL</span><br/>SYSTEM</h1>
+      <div class="version-tag">v2.0 · ACTIVE</div>
+    </div>
+    <div class="status-bar">
+      <span class="dot green"></span> SYSTEM ONLINE &nbsp;|&nbsp;
+      <span class="dot amber"></span> MONITORING ACTIVE &nbsp;|&nbsp;
+      <span class="dot blue"></span> AI ENABLED
+    </div>
+    <div class="home-buttons">
+      <button class="btn-primary" onclick="showPage('publicPage')">
+        <span class="btn-icon">👤</span>
+        <span>PUBLIC PORTAL</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <button class="btn-secondary" onclick="showPage('policePage')">
+        <span class="btn-icon">🚔</span>
+        <span>POLICE COMMAND</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLIC -->
+<div id="publicPage" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="showPage('home')">← BACK</button>
+    <div class="page-title">
+      <span class="page-icon">👤</span>
+      PUBLIC SAFETY PORTAL
+    </div>
+    <div class="header-badge">LIVE</div>
+  </div>
+
+  <div class="public-layout">
+    <div class="control-panel">
+      <div class="panel-label">SELECT CITY</div>
+      <div class="select-wrapper">
+        <select id="citySelect"></select>
+        <span class="select-arrow">▼</span>
+      </div>
+      <button class="go-btn" onclick="checkRisk()">
+        <span>ANALYZE RISK</span>
+        <span class="pulse-dot"></span>
+      </button>
+      <div id="result"></div>
+    </div>
+
+    
+  </div>
+</div>
+
+<!-- POLICE -->
+<div id="policePage" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="showPage('home')">← BACK</button>
+    <div class="page-title">
+      <span class="page-icon">🚔</span>
+      POLICE COMMAND CENTER
+    </div>
+    <div class="header-badge alert-badge">COMMAND</div>
+  </div>
+
+  <div class="police-grid">
+    <div class="police-card">
+      <div class="card-header">
+        <span>📊</span> TOP RISK ZONES
+      </div>
+      <div id="citiesList" class="cities-list"></div>
+    </div>
+
+    <div class="police-card emergency-card">
+      <div class="card-header">
+        <span>🚨</span> EMERGENCY ALERT
+      </div>
+      <div id="emergencyBox" class="emergency-content"></div>
+    </div>
+
+    <div class="police-card full-width">
+      <div class="card-header">
+        <span>🗺️</span> DEPLOY PATROL UNITS
+      </div>
+      <div id="patrolList" class="patrol-grid"></div>
+      <button class="deploy-btn" onclick="sendPatrol()">
+        🚓 DEPLOY PATROL UNITS
+      </button>
+      <div id="message"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
