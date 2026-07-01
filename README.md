@@ -96,7 +96,7 @@ The project aims to support:
 
 # 📂 Dataset Used
 
-* **Train City Dataset**
+* **Crime City Dataset**
 
 ---
 
